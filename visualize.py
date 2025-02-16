@@ -10,17 +10,23 @@ labelsTitles = ["T-shirt","Trouser","Pullover","Dress","Coat","Sandal","Shirt","
 unique_labels = np.unique(y)
 colors = ["blue", "orange", "green", "red", "purple", "brown", "pink", "gray", "yellow", "cyan"]
 
-
+print(latentSpaces.shape)
 #Describin the data
 plt.subplot(1, 3, 1)
 plt.hist(latentSpaces[:, 0], bins=30)
 print(np.mean(latentSpaces[:, 0]))
+print(np.std(latentSpaces[:, 0]))
+print("===============")
 plt.subplot(1, 3, 2)
 plt.hist(latentSpaces[:, 1], bins=30)
 print(np.mean(latentSpaces[:, 1]))
+print(np.std(latentSpaces[:, 1]))
+print("===============")
 plt.subplot(1, 3, 3)
 plt.hist(latentSpaces[:, 2], bins=30)
 print(np.mean(latentSpaces[:, 2]))
+print(np.std(latentSpaces[:, 2]))
+print("===============")
 plt.tight_layout()
 plt.show()
 
