@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
-visualizationData = np.load("visualization.npz")
+visualizationData = np.load("data/visualization.npz")
 y = visualizationData["y"]
 latentSpaces = visualizationData["latent3d"]
 
@@ -25,12 +25,14 @@ plt.tight_layout()
 plt.show()
 
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection="3d")
+for stage in range(10):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection="3d")
 
-for i, label in enumerate(unique_labels):
-    mask = (y == label)
-    ax.scatter(latentSpaces[mask, 0], latentSpaces[mask, 1], latentSpaces[mask, 2],
-                color=colors[i], label=labelsTitles[label], alpha=0.5)
-ax.legend()
-plt.show()
+    for i, label in enumerate(unique_labels):
+        if i > stage: break
+        mask = (y == label)
+        ax.scatter(latentSpaces[mask, 0], latentSpaces[mask, 1], latentSpaces[mask, 2],
+                    color=colors[i], label=labelsTitles[label], alpha=0.5)
+    ax.legend()
+    plt.show()
